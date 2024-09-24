@@ -167,8 +167,6 @@ export const apyTooltip = ({
   supplyAPY?: string;
   borrowAPY?: string;
 }) => {
-  console.log('supplyAPY', supplyAPY);
-  console.log('borrowAPY', borrowAPY);
   if (supplyAPY && underlyingAPY && isSuperfest) {
     return (
       <>
@@ -186,15 +184,12 @@ export const apyTooltip = ({
     );
   }
   if (supplyAPY && underlyingAPY && !isSuperfest) {
-    console.log('Supply tooltip');
     return <ListAPYDetails supplyAPY={Number(supplyAPY)} underlyingAPY={underlyingAPY} />;
   }
   if (borrowAPY && underlyingAPY && !isSuperfest) {
-    console.log('Borrow tooltip');
     return <ListAPYDetails borrowAPY={Number(borrowAPY)} underlyingAPY={underlyingAPY} />;
   }
   if (isSuperfest && !underlyingAPY) {
-    console.log('Superfest tooltip');
     return <SuperFestTooltip />;
   }
   return null;
