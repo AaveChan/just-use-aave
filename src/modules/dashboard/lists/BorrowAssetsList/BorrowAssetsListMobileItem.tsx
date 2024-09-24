@@ -76,7 +76,8 @@ export const BorrowAssetsListMobileItem = ({
           tooltip={
             underlyingAPY ? (
               <ListAPYDetails
-                borrowAPY={Number(variableBorrowRate)}
+                apy={Number(variableBorrowRate)}
+                side={Side.BORROW}
                 underlyingAPY={underlyingAPY}
               />
             ) : null
@@ -86,25 +87,6 @@ export const BorrowAssetsListMobileItem = ({
           variant="secondary14"
         />
       </Row>
-      {/* <Row
-        caption={
-          <StableAPYTooltip
-            text={<Trans>APY, stable</Trans>}
-            key="APY_dash_mob_stable_ type"
-            variant="description"
-          />
-        }
-        align="flex-start"
-        captionVariant="description"
-        mb={2}
-      >
-        <IncentivesCard
-          value={Number(stableBorrowRate)}
-          incentives={sIncentivesData}
-          symbol={symbol}
-          variant="secondary14"
-        />
-      </Row> */}
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: 5 }}>
         <Button
           disabled={disableBorrow}

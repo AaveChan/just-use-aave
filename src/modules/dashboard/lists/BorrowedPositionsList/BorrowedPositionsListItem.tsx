@@ -149,7 +149,11 @@ const BorrowedPositionsListItemDesktop = ({
         value={reserve.underlyingAPY ? borrowAPY + reserve.underlyingAPY : borrowAPY}
         tooltip={
           reserve.underlyingAPY ? (
-            <ListAPYDetails borrowAPY={borrowAPY} underlyingAPY={reserve.underlyingAPY} />
+            <ListAPYDetails
+              apy={borrowAPY}
+              side={Side.BORROW}
+              underlyingAPY={reserve.underlyingAPY}
+            />
           ) : null
         }
         incentives={incentives}
@@ -247,7 +251,11 @@ const BorrowedPositionsListItemMobile = ({
           value={reserve.underlyingAPY ? borrowAPY + reserve.underlyingAPY : borrowAPY}
           tooltip={
             reserve.underlyingAPY ? (
-              <ListAPYDetails borrowAPY={borrowAPY} underlyingAPY={reserve.underlyingAPY} />
+              <ListAPYDetails
+                apy={borrowAPY}
+                side={Side.BORROW}
+                underlyingAPY={reserve.underlyingAPY}
+              />
             ) : null
           }
           incentives={incentives}
