@@ -59,7 +59,12 @@ export const MarketAssetsListMobileItem = ({ ...reserve }: ComputedReserveData) 
               ? Number(reserve.supplyAPY) + reserve.underlyingAPY
               : Number(reserve.supplyAPY)
           }
-          tooltip={apyTooltip(reserve.underlyingAPY, isSuperfestOnSupplySide, reserve.supplyAPY)}
+          tooltip={apyTooltip({
+            underlyingAPY: reserve.underlyingAPY,
+            isSuperfest: isSuperfestOnSupplySide,
+            apy: reserve.supplyAPY,
+            side: Side.SUPPLY,
+          })}
           incentives={reserve.aIncentivesData || []}
           symbol={reserve.symbol}
           variant="secondary14"
@@ -113,42 +118,18 @@ export const MarketAssetsListMobileItem = ({ ...reserve }: ComputedReserveData) 
             incentives={reserve.vIncentivesData || []}
             symbol={reserve.symbol}
             variant="secondary14"
-            tooltip={apyTooltip(
-              reserve.underlyingAPY,
-              isSuperfestOnBorrowSide,
-              reserve.variableBorrowAPY
-            )}
+            tooltip={apyTooltip({
+              underlyingAPY: reserve.underlyingAPY,
+              isSuperfest: isSuperfestOnBorrowSide,
+              apy: reserve.variableBorrowAPY,
+              side: Side.BORROW,
+            })}
           />
           {!reserve.borrowingEnabled &&
             Number(reserve.totalVariableDebt) > 0 &&
             !reserve.isFrozen && <ReserveSubheader value={'Disabled'} />}
         </Box>
       </Row>
-      {/* <Row
-        caption={
-          <StableAPYTooltip
-            text={<Trans>Borrow APY, stable</Trans>}
-            key="APY_list_mob_stable_type"
-            variant="description"
-          />
-        }
-        captionVariant="description"
-        mb={4}
-        align="flex-start"
-      >
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <IncentivesCard
-            align="flex-end"
-            value={Number(reserve.totalStableDebtUSD) > 0 ? reserve.stableBorrowAPY : '-1'}
-            incentives={reserve.sIncentivesData || []}
-            symbol={reserve.symbol}
-            variant="secondary14"
-          />
-          {!reserve.borrowingEnabled &&
-            Number(reserve.totalStableDebt) > 0 &&
-            !reserve.isFrozen && <ReserveSubheader value={'Disabled'} />}
-        </Box>
-      </Row> */}
 
       <Button
         variant="outlined"
